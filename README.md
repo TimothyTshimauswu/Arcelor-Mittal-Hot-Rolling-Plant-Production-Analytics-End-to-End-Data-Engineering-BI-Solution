@@ -1,8 +1,19 @@
+<p align="center">
+  <img src="assets/project_banner.png" width="100%" alt="Steel Hot Rolling Plant Data Engineering Pipeline with Coil Cycle Modelling and Operations Analytics Banner">
+</p>
 
-# Steel Hot Rolling Plant Data Engineering Pipeline with Coil Cycle Modelling and Operations Analytics
+<h1 align="center">Steel Hot Rolling Plant Data Engineering Pipeline with Coil Cycle Modelling and Operations Analytics</h1>
+
+<p align="center">
+  <strong>Python • Pandas • NumPy • SQL (MySQL) • ETL Pipelines • Feature Engineering • Time-Series Modelling • Industrial Analytics • Maintenance Analytics • Process Engineering • Power BI • Manufacturing KPIs</strong>
+</p>
+
+<p align="center">
 
 A full-scale data engineering and analytics pipeline built to diagnose throughput losses, equipment bottlenecks, downtime patterns, and shift-related delays in a steel hot rolling temper line.  
 The system reconstructs coil cycle behaviour, integrates production and maintenance data, and delivers BI insights that support higher throughput, reduced downtime, and better operational planning.
+</p>
+# Steel Hot Rolling Plant Data Engineering Pipeline with Coil Cycle Modelling and Operations Analytics
 
 ---
 
