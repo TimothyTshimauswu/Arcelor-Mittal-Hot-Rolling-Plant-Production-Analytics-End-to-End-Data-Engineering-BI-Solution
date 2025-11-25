@@ -43,7 +43,17 @@ Redirecting thin flat products to a line not designed for them created instabili
 The goal was to build a reliable operational intelligence system combining production, maintenance, and equipment activity.
 
 ---
+## 📁 Project Structure
 
+| Folder / File | Description |
+|---------------|-------------|
+| `data/` | Raw and processed datasets |
+| `notebooks/` | EDA, feature engineering, model training |
+| `sql/` | SQL analytics for Operational Analytics |
+| `Power BI Production Dashboard/` | Power BI visuals and reporting |
+| `assets/` | Images, banners, visuals |
+
+---
 ## Technical Overview
 
 I delivered the full solution across data engineering, modelling, SQL analytics, and BI reporting.
