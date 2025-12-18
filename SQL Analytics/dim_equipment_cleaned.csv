@@ -1,0 +1,26 @@
+"equipment_id";"equipment_name";"process_order";"section";"equipment_type";"is_bottleneck_candidate";"is_active"
+1;"CCTV Camera";0;"";"";0;0
+2;"Central Hyd System";0;"";"";0;0
+3;"Coil Prep Sattion";1;"ENTRY";"Entry Prep Shear";0;1
+4;"Common Equipment";0;"";"";0;0
+5;"Computer Room";0;"";"";0;0
+6;"Crop Shear";8;"CENTRE";"Shear";0;1
+7;"Decoiler";2;"ENTRY";"Decoiler";1;1
+8;"Delivery Conveyor";11;"EXIT";"Conveyor";0;1
+9;"Entry & Exit Feed Table";5;"ENTRY";"Feed Table";0;1
+10;"Entry Guide Table";4;"ENTRY";"Guide Table";0;1
+11;"Entry SnubberHold Down & Pressure Rolls";3;"ENTRY";"Snubber Rolls";0;1
+12;"Exit Coil Car";13;"EXIT";"Coil Car";1;1
+13;"Farval Systems";0;"";"";0;0
+14;"First Conveyor";9;"EXIT";"Conveyor";0;1
+15;"Flattener, Pinch & Deflator Rolls";6;"CENTRE";"Leveler";0;1
+16;"General";0;"";"";0;0
+17;"Lube System";0;"";"";0;0
+18;"Operation";0;"";"";0;0
+19;"Operations";0;"";"";0;0
+20;"Roll Shop";0;"";"";0;0
+21;"Scale M65 (conveyor)";12;"EXIT";"Scale";1;1
+22;"Second Conveyor";10;"EXIT";"Conveyor";0;1
+23;"Services";0;"";"";0;0
+24;"Shutdown";0;"";"";0;0
+25;"Temper Mill Unit";7;"CENTRE";"Temper Mill";1;1
