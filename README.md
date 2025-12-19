@@ -304,7 +304,7 @@ WHERE e.is_active = 1
 GROUP BY e.equipment_name, e.section, e.is_bottleneck_candidate
 ORDER BY time_share_pct DESC;
 ---
-
+---
 ### **Phase 4: Power BI Dashboards**
 
 **Technologies:** Power BI Desktop, DAX, Power Query
@@ -335,6 +335,7 @@ ORDER BY time_share_pct DESC;
    - Width vs thickness scatter (cycle time bubbles)
    - Cycle time distribution by product type
    - Parent coil yield analysis
+
 
 #### **DAX Measures (150+ Total):**
 
