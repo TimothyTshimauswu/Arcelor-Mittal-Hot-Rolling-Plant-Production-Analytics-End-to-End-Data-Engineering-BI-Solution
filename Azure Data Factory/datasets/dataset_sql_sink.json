@@ -1,0 +1,101 @@
+{
+    "name": "DS_AzureSQL_stg_fact_production_coil",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "AzureSqlDatabase1",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlTable",
+        "schema": [
+            {
+                "name": "coil_id",
+                "type": "nvarchar"
+            },
+            {
+                "name": "parent_coil_id",
+                "type": "nvarchar"
+            },
+            {
+                "name": "production_date",
+                "type": "nvarchar"
+            },
+            {
+                "name": "completion_ts",
+                "type": "nvarchar"
+            },
+            {
+                "name": "shift_code",
+                "type": "nvarchar"
+            },
+            {
+                "name": "thickness_mm",
+                "type": "nvarchar"
+            },
+            {
+                "name": "width_mm",
+                "type": "nvarchar"
+            },
+            {
+                "name": "mass_out_tons",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Hours",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Grade",
+                "type": "nvarchar"
+            },
+            {
+                "name": "NextProcess",
+                "type": "nvarchar"
+            },
+            {
+                "name": "type_code",
+                "type": "nvarchar"
+            },
+            {
+                "name": "is_prime",
+                "type": "nvarchar"
+            },
+            {
+                "name": "is_scrap",
+                "type": "nvarchar"
+            },
+            {
+                "name": "gap_from_prev_completion_min",
+                "type": "nvarchar"
+            },
+            {
+                "name": "gap_from_prev_parent_min",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Cast",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Slab",
+                "type": "nvarchar"
+            },
+            {
+                "name": "start_datetime",
+                "type": "nvarchar"
+            },
+            {
+                "name": "end_datetime",
+                "type": "nvarchar"
+            },
+            {
+                "name": "total_cycle_time_min",
+                "type": "nvarchar"
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "stg_fact_production_coil"
+        }
+    }
+}

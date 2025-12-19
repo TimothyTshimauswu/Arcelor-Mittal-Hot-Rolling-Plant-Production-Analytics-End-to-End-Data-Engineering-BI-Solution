@@ -1,0 +1,109 @@
+{
+    "name": "DS_BlobCSV_fact_production_coil",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "AzureBlobStoragedf",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobStorageLocation",
+                "fileName": "fact_production_coil.csv",
+                "container": "amsablobstorage"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
+        },
+        "schema": [
+            {
+                "name": "coil_id",
+                "type": "String"
+            },
+            {
+                "name": "parent_coil_id",
+                "type": "String"
+            },
+            {
+                "name": "production_date",
+                "type": "String"
+            },
+            {
+                "name": "completion_ts",
+                "type": "String"
+            },
+            {
+                "name": "shift_code",
+                "type": "String"
+            },
+            {
+                "name": "thickness_mm",
+                "type": "String"
+            },
+            {
+                "name": "width_mm",
+                "type": "String"
+            },
+            {
+                "name": "mass_out_tons",
+                "type": "String"
+            },
+            {
+                "name": "Hours",
+                "type": "String"
+            },
+            {
+                "name": "Grade",
+                "type": "String"
+            },
+            {
+                "name": "NextProcess",
+                "type": "String"
+            },
+            {
+                "name": "type_code",
+                "type": "String"
+            },
+            {
+                "name": "is_prime",
+                "type": "String"
+            },
+            {
+                "name": "is_scrap",
+                "type": "String"
+            },
+            {
+                "name": "gap_from_prev_completion_min",
+                "type": "String"
+            },
+            {
+                "name": "gap_from_prev_parent_min",
+                "type": "String"
+            },
+            {
+                "name": "Cast",
+                "type": "String"
+            },
+            {
+                "name": "Slab",
+                "type": "String"
+            },
+            {
+                "name": "start_datetime",
+                "type": "String"
+            },
+            {
+                "name": "end_datetime",
+                "type": "String"
+            },
+            {
+                "name": "total_cycle_time_min",
+                "type": "String"
+            }
+        ]
+    },
+    "type": "Microsoft.DataFactory/factories/datasets"
+}
