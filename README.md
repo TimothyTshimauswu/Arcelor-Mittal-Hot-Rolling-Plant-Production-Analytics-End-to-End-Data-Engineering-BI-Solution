@@ -4,7 +4,7 @@
 
 <p align="center">
 
-# 🏭 Arcelor Mittal Hot Rolling Plant Production  Analytics: End-to-End Data Engineering & BI Solution
+#Arcelor Mittal Hot Rolling Plant Production  Analytics: End-to-End Data Engineering & BI Solution
 
 [![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
 [![Azure](https://img.shields.io/badge/Azure-Data_Factory-0078D4.svg)](https://azure.microsoft.com/)
@@ -29,18 +29,18 @@
 
 ---
 
-## 🎯 **Problem Statement**
+## **Problem Statement**
 
 ### **The Business Challenge**
 
 After the closure of ArcelorMittal's Saldanha Works, **all thin flat products were redirected to Vanderbijlpark**, increasing monthly production targets by **30%**. The temper line—the final step before dispatch—was:
 
-- ❌ Not originally designed for thin flat products
-- ❌ Operating without historical data for the new product mix
-- ❌ Experiencing falling tempo (throughput)
-- ❌ Suffering from frequent breakdowns and inconsistent performance
-- ❌ Missing monthly production targets
-- ❌ Unable to explain delays through operator feedback alone
+- Not originally designed for thin flat products
+- Operating without historical data for the new product mix
+- Experiencing falling tempo (throughput)
+- Suffering from frequent breakdowns and inconsistent performance
+- Missing monthly production targets
+- Unable to explain delays through operator feedback alone
 
 **Management needed answers:** What's slowing down the line? Which equipment is the bottleneck? Why do shifts vary in performance? How can we hit our targets?
 
@@ -55,7 +55,7 @@ I built a complete **end-to-end data engineering and analytics pipeline** that:
 
 ---
 
-## 🏗️ **Architecture Overview**
+## **Architecture Overview**
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
@@ -162,9 +162,9 @@ I built a complete **end-to-end data engineering and analytics pipeline** that:
    - **Tempo Analysis:** Calculated gaps between completions to measure line throughput
    - **Bottleneck Identification:** Flagged 6 critical equipment pieces consuming 42% of line time
 
-3. **Synthetic Cycle Time Modeling** ⭐ **(Key Innovation)**
+3. **Synthetic Cycle Time Modeling** **(Key Innovation)**
    - **Challenge:** No equipment-level encoder data available (NDA restrictions)
-   - **Solution:** Built synthetic operation timeline anchored to REAL MES completion timestamps
+   - **Solution:** Built a synthetic operation timeline anchored to REAL MES completion timestamps
    - **Methodology:**
      - Work backwards from actual completion time
      - Apply product-specific duration multipliers (thin: 0.5-0.7×, thick: 1.1-1.3×)
