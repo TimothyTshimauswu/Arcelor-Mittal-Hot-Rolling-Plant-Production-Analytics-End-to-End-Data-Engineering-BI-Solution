@@ -19,7 +19,7 @@
 
 **Business Problem**: After ArcelorMittal Saldanha Works closure redirected thin flat products to Vanderbijlpark, the temper line faced a 30% production increase on equipment not designed for this product mix. The plant missed monthly targets for the first time, with falling tempo, frequent breakdowns, and no visibility into which equipment constrained the line.
 
-**Solution**: I built an end-to-end Azure data pipeline transforming raw MES and maintenance data into executive intelligence dashboards. **The innovation**: synthetic cycle time modeling—reverse-engineering equipment operations from sparse MES timestamps when encoder data was restricted—enabling the plant's first data-driven bottleneck analysis.
+**Solution**: I built an end-to-end Azure data pipeline transforming raw MES and maintenance data into executive intelligence dashboards. **The innovation**: synthetic cycle time modeling—reverse-engineering equipment operations from sparse MES timestamps when encoder data was restricted,enabling the plant's first data-driven bottleneck analysis.
 
 **Impact**: Increased monthly production from **38kt to 40kt (5.3% improvement) generating R38M annual operating profit**. Identified 3 critical bottlenecks consuming 44% of line time, achieved ~10% tempo improvement, reduced maintenance downtime 5%, and enabled 4-shift → 3-shift recommendation saving 15+ minutes per handover. The Power BI dashboards became the **primary weekly performance tool** for 15+ daily users across production, maintenance, and executive teams.
 
