@@ -19,7 +19,7 @@
 
 **Business Problem**: After ArcelorMittal Saldanha Works closure redirected thin flat products to Vanderbijlpark, the temper line faced a 30% production increase on equipment not designed for this product mix. The plant missed monthly targets for the first time, with falling tempo, frequent breakdowns, and no visibility into which equipment constrained the line.
 
-**Solution**: I built an end-to-end Azure data pipeline transforming raw MES and maintenance data into executive intelligence dashboards. **The innovation**: synthetic cycle time modeling—reverse-engineering equipment operations from sparse MES timestamps when encoder data was restricted,enabling the plant's first data-driven bottleneck analysis.
+**Solution**: I built an end-to-end Azure data pipeline transforming raw MES and maintenance data into executive intelligence dashboards. **The innovation**: synthetic cycle time modeling—reverse-engineering equipment operations from sparse MES timestamps when encoder data was restricted—enabling the plant's first data-driven bottleneck analysis.
 
 **Impact**: Increased monthly production from **38kt to 40kt (5.3% improvement) generating R38M annual operating profit**. Identified 3 critical bottlenecks consuming 44% of line time, achieved ~10% tempo improvement, reduced maintenance downtime 5%, and enabled 4-shift → 3-shift recommendation saving 15+ minutes per handover. The Power BI dashboards became the **primary weekly performance tool** for 15+ daily users across production, maintenance, and executive teams.
 
@@ -92,17 +92,33 @@ Following Saldanha Works closure, **thin flat steel products redirected to Vande
                     │
                     ▼
 ┌─────────────────────────────────────────────────┐
-│  AZURE DATA FACTORY                             │
-│  • Stage 1: CSV → Staging (NVARCHAR, type-safe)│
-│  • Stage 2: Staging → Production (typed, validated)│
-│  • Scheduled daily 06:00 | 2-3 min execution    │
+│  AZURE BLOB STORAGE                             │
+│  • CSV files staged for ingestion               │
+│  • amsablob container                           │
+└───────────────────┬─────────────────────────────┘
+                    │
+                    ▼
+┌─────────────────────────────────────────────────┐
+│  AZURE DATA FACTORY (Master Pipeline)          │
+│  • Execute_Load_Dimensions (parallel)           │
+│  • Execute_Load_Production (sequential)         │
+│  • Execute_Load_Cycles (parallel with events)   │
+│  • Execute_Load_Events (parallel with cycles)   │
+│  • Execute_Load_Maintenance                     │
+│  • Transform_Staging_to_Production (SP)         │
+│                                                 │
+│  Stage 1: CSV → Staging (NVARCHAR, type-safe)  │
+│  Stage 2: Staging → Production (typed, validated)│
+│  Scheduled: Daily 06:00 | 2-3 min execution     │
 └───────────────────┬─────────────────────────────┘
                     │
                     ▼
 ┌─────────────────────────────────────────────────┐
 │  AZURE SQL DATABASE (Star Schema)              │
 │  • 6 production tables (indexed, optimized)     │
-│  • Stored procedures for transformation         │
+│  • 6 staging tables (NVARCHAR, type conversion) │
+│  • 7 stored procedures for transformation       │
+│  • 2 analytical query scripts (T-SQL)           │
 └───────────────────┬─────────────────────────────┘
                     │
                     ▼
@@ -112,6 +128,11 @@ Following Saldanha Works closure, **thin flat steel products redirected to Vande
 │  • Hourly refresh, mobile-optimized             │
 └─────────────────────────────────────────────────┘
 ```
+
+### **Azure Data Factory Pipeline**
+
+![Azure Data Factory Master Pipeline](assets/Master_Load_Pipeline.png)
+*Production data pipeline: CSV ingestion from Blob Storage → Staging tables → Stored procedure transformation → Production tables. Orchestrated execution ensures data integrity across 6 fact and dimension tables.*
 
 ### **Key Innovation: Synthetic Cycle Time Modeling**
 
@@ -123,14 +144,6 @@ Following Saldanha Works closure, **thin flat steel products redirected to Vande
 - Thin products (<2mm): 0.5-0.7× base duration | Thick (>3mm): 1.1-1.3×
 - Factor shift performance (Shift A: 1.05×, Shift C: 0.95×)
 - Generate RUN/IDLE/FAULT event sequences
-
-**Validation**: <1 second error vs real timestamps (98.7% cycle time agreement)
-
-**Impact**: Enabled first equipment-level bottleneck analysis in plant history—identified Temper Mill (18%), Exit Coil Car (14%), Decoiler (12%) as constraints
-
-![Synthetic Validation](assets/synthetic_validation_scatter.png)
-*Synthetic vs real validation: R²=0.997 demonstrates <1s accuracy enabling bottleneck conclusions despite encoder unavailability*
-
 ---
 
 ## Analytical Deep Dive
@@ -203,8 +216,59 @@ Automated identification of intervention priorities (>15% score = critical)
 - **Replaced 3 Manual Reports**: Weekly ops review now dashboard-driven (40% time savings)
 - **Cultural Shift**: Anecdote-driven → data-driven decision making
 
-> *"For the first time in 15 years, we can see exactly which equipment is slowing us down."*  
-> — Production Manager, Hot Rolling Plant
+---
+
+## Azure SQL Database Analytics
+
+### **Two-Stage Data Pipeline**
+
+**Stage 1: CSV → Staging Tables (Type-Safe Ingestion)**
+- All columns loaded as `NVARCHAR` to prevent type conversion failures
+- Bulk insert with table lock (10-100× faster than row-by-row)
+- Pre-copy script truncates staging tables for full refresh
+- 6 staging tables: `stg_dim_equipment`, `stg_dim_date_crew_schedule`, `stg_fact_production_coil`, `stg_fact_maintenance_event`, `stg_fact_coil_operation_cycle`, `stg_fact_equipment_event_log`
+
+**Stage 2: Staging → Production Tables (Stored Procedure Transformation)**
+- 7 stored procedures handle type conversion and validation
+- `DELETE` operations (not `TRUNCATE`) respect foreign key constraints
+- Dimension tables loaded first, then fact tables (dependency order)
+- Master procedure `usp_Master_Load_All_Tables` orchestrates full ETL
+
+**Pipeline Execution**: 2-3 minutes for 230,775 operation records
+
+### **Analytical Query Scripts**
+
+**Bottleneck Analysis (10 Queries)**:
+1. Equipment Time Share Analysis
+2. Bottleneck Share (% of Total Line Time with Pareto cumulative)
+3. Equipment Utilization (RUN/IDLE/FAULT Breakdown)
+4. Bottleneck Severity by Shift
+5. Product Mix Impact on Bottleneck Equipment
+6. Top 10 Longest Equipment Operations (Outlier Detection)
+7. Equipment Idle Time Analysis
+8. Maintenance Downtime Impact on Bottleneck Equipment
+9. Bottleneck Equipment Daily Performance
+10. Bottleneck Summary Report (Critical/High/Moderate severity classification)
+
+**Tempo Analysis (12 Queries)**:
+1. Daily Tempo Trend (with 7-day moving average)
+2. Inter-Coil Gap Distribution
+3. Tempo by Shift (Crew Performance Comparison)
+4. Shift Handover Loss Quantification (06:00 and 18:00 gaps)
+5. Product Mix Impact on Tempo
+6. Parent Coil Transition Efficiency
+7. Hourly Tempo Pattern (24-Hour View)
+8. Weekly Tempo Trend (Day of Week Analysis)
+9. Prime vs Scrap Tempo Comparison
+10. Tempo Improvement Opportunities Summary (Percentile analysis)
+11. Monthly Tempo Comparison
+12. Gap Outlier Detection (Z-score analysis)
+
+**Key Insights Enabled**:
+- Pareto analysis identifies top 3 equipment consuming 44% of line time
+- Shift handover gaps quantified at 15-22 minutes per transition
+- Product band analysis (Thin & Narrow vs Standard Mix) shows 40% cycle time difference
+- MTBF/MTTR metrics enable predictive maintenance prioritization
 
 ---
 
@@ -280,11 +344,16 @@ Automated identification of intervention priorities (>15% score = critical)
 **Cloud Infrastructure**
 - Azure Data Factory (6 pipelines, hourly orchestration)
 - Azure SQL Database (star schema, indexed)
-- Azure Blob Storage (CSV staging)
+- Azure Blob Storage (CSV staging, amsablob container)
+
+**Database & Analytics**
+- T-SQL (7 stored procedures, 6 staging tables, 6 production tables)
+- Bottleneck Analysis Queries (10 analytical queries)
+- Tempo Analysis Queries (12 analytical queries)
 
 **Business Intelligence**
 - Power BI Desktop (5 dashboards, 150+ DAX measures)
-- T-SQL (stored procedures, views, transformation logic)
+- T-SQL Views (transformation logic, data quality checks)
 
 **Statistical Analysis**
 - SciPy (hypothesis testing, p-values)
@@ -313,15 +382,20 @@ arcelormittal-hot-rolling-analytics/
 │
 ├── azure/
 │   ├── adf_pipelines/               # ADF pipeline JSONs
-│   ├── sql/                         # Staging/production table scripts
-│   └── stored_procedures/           # Transformation SPs
+│   ├── sql/
+│   │   ├── staging_tables/          # 6 staging table schemas
+│   │   ├── production_tables/       # 6 production table schemas
+│   │   ├── stored_procedures/       # 7 transformation SPs
+│   │   ├── Bottleneck_Analysis_Queries.sql  # 10 analytical queries
+│   │   └── Tempo_Analysis_Queries.sql       # 12 analytical queries
+│   └── blob_storage/                # CSV upload scripts
 │
 ├── powerbi/
 │   ├── dashboards/                  # 5 .pbix files
 │   ├── theme/                       # ArcelorMittal brand theme
 │   └── dax/                         # DAX formulas reference
 │
-├── assets/                          # README images
+├── assets/                          # README images + pipeline diagrams
 ├── requirements.txt
 └── README.md
 ```
