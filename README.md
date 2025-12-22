@@ -375,8 +375,6 @@ arcelormittal-hot-rolling-analytics/
 │
 ├── notebooks/
 │   ├── 01_exploratory_data_analysis.ipynb
-│   ├── 02_feature_engineering_dimensional_modeling.ipynb
-│   └── 03_synthetic_cycle_time_modeling.ipynb
 │
 ├── python_pipeline/                 # 13 production ETL scripts
 │   ├── 01_load_data_updated.py
