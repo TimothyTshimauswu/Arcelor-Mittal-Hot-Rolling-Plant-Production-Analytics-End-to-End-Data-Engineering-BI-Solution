@@ -201,10 +201,10 @@ Automated identification of intervention priorities (>15% score = critical)
 |--------|----------|---------------------|-------------|------------------|
 | **Monthly Production** | 38kt | 40kt | **+5.3%** | **R3.2M/month profit** |
 | **Tempo (Pieces/Hour)** | 3.6 | 4.0 | **+11.1%** | Target achieved |
-| **Prime Rate** | 85.0% | 87.2% | **+2.2pp** | R450K/month scrap reduction |
+| **Prime Rate** | 68.0% | 70.2% | **+2.2pp** | R450K/month scrap reduction |
 | **Equipment Utilization** | 72% | 78.5% | **+6.5pp** | Avoided R12M capex |
 | **Maintenance Downtime** | 18.2 hrs/mo | 17.3 hrs/mo | **-5.0%** | R180K labor savings/month |
-| **Shift Handover Loss** | 22 min | 7 min | **-68%** | 3-shift enabled |
+| **Shift Handover Loss** | 22 min | 10 min | **-45%** | 3-shift enabled |
 
 **Annual Operating Profit**: R38M (production increase + prime rate improvement + maintenance efficiency)
 
