@@ -9,7 +9,7 @@
 ![Pandas](https://img.shields.io/badge/Pandas-Data%20Engineering-green.svg)
 ![Status](https://img.shields.io/badge/Status-Production%20Deployed-brightgreen.svg)
 
-**Delivered R38M Annual Operating Profit Through Data-Driven Production Optimization**
+**Delivered R38M Annual Operating Profit and Enabled First-Ever 40 kt/month Production Through Data-Driven Optimisation**
 
 </div>
 
@@ -17,27 +17,33 @@
 
 ## Executive Summary
 
-**Business Problem**: After ArcelorMittal Saldanha Works closure redirected thin flat products to Vanderbijlpark, the temper line faced a 30% production increase on equipment not designed for this product mix. The plant missed monthly targets for the first time, with falling tempo, frequent breakdowns, and no visibility into which equipment constrained the line.
+**Business Problem**: Following the closure of ArcelorMittal Saldanha Works, thin flat products were redirected to Vanderbijlpark, increasing effective demand on the temper line without changes to equipment design or operating model. The line began missing targets, showing unstable daily tempo, high scrap rates, and no reliable visibility into which constraints were limiting throughput.
 
-**Solution**: I built an end-to-end Azure data pipeline transforming raw MES and maintenance data into executive intelligence dashboards. **The innovation**: synthetic cycle time modeling—reverse-engineering equipment operations from sparse MES timestamps when encoder data was restricted—enabling the plant's first data-driven bottleneck analysis.
+**Solution**: I built an end-to-end Azure data engineering and BI solution that transformed raw MES and maintenance data into operational intelligence. The key innovation was **synthetic cycle time modelling**, reconstructing equipment-level operations and event timelines from sparse MES completion timestamps where encoder data was restricted.
 
-**Impact**: Increased monthly production from **38kt to 40kt (5.3% improvement) generating R38M annual operating profit**. Identified 3 critical bottlenecks consuming 44% of line time, achieved ~10% tempo improvement, reduced maintenance downtime 5%, and enabled 4-shift → 3-shift recommendation saving 15+ minutes per handover. The Power BI dashboards became the **primary weekly performance tool** for 15+ daily users across production, maintenance, and executive teams.
+**Impact**:  
+- Quantified that throughput losses were dominated by **coil-to-coil gaps and idle time (95.7% IDLE)** rather than equipment speed  
+- Identified **6 constraint equipment pieces consuming ~80% of line time**, with the Temper Mill alone at **23.4%**  
+- Informed targeted operational interventions across scheduling, handover discipline, and bottleneck feeding  
+- **Post-implementation, the line reached 40 kt/month for the first time**, increasing sustainable capacity from **38 kt/month to 40 kt/month**  
+- Generated **R38M annual operating profit** through throughput recovery, scrap reduction, and downtime optimisation  
+- Power BI dashboards became the **primary weekly performance tool** for production, maintenance, and management teams  
 
-![Project Architecture](assets/project_overview_banner.png)
+![Project Architecture](assets/project_overview_banner.png)  
 *End-to-end pipeline: Python ETL → Azure Data Factory → Azure SQL Database → Power BI dashboards serving plant operations*
 
 ---
 
 ## Key Achievements
 
-- **R38M Annual Operating Profit**: 5.3% production increase (38kt → 40kt/month) at 95% margin generates R3.2M/month incremental profit
-- **~10% Tempo Improvement**: Identified 3 critical bottlenecks (Temper Mill, Exit Coil Car, Decoiler) through equipment-level cycle time analysis
-- **Novel Synthetic Modeling**: Engineered equipment operation timelines from sparse MES data—validated <1 second accuracy despite encoder restrictions
-- **87.2% Prime Rate**: Exceeded 85% quality target through product mix optimization insights
-- **5% Maintenance Downtime Reduction**: MTBF/MTTR analytics enabled targeted interventions on problem equipment
-- **40% Manual Reporting Reduction**: Automated dashboards replaced weekly Excel consolidation for management
-- **15+ Minute Shift Handover Savings**: Data-driven 4-shift → 3-shift operational recommendation
-- **Azure Production Deployment**: Scalable cloud pipeline handling 230,775 equipment operations with hourly refresh
+- **R38M Annual Operating Profit** driven by throughput recovery and operational efficiency
+- **Throughput Step-Change**: Enabled achievement of **40 kt/month**, exceeding the historical **38 kt/month ceiling**
+- **Constraint Visibility**: Demonstrated that **6 equipment pieces account for ~80% of total line time**
+- **Primary Bottleneck Identified**: Temper Mill Unit alone consumes **23.4% of processing time**
+- **Tempo Transparency**: Revealed extreme underutilisation (**3.9% RUN vs 95.7% IDLE**) driven by systemic gaps
+- **Maintenance Insight**: Isolated **877 hours of downtime**, dominated by non-specific categories requiring governance fixes
+- **Data Adoption**: Replaced fragmented Excel reporting with unified dashboards used by **15+ daily stakeholders**
+- **Scalable Deployment**: Azure pipeline processes **300k+ event records** with reliable daily refresh
 
 ---
 
@@ -45,16 +51,17 @@
 
 ### **The Business Challenge**
 
-Following Saldanha Works closure, **thin flat steel products redirected to Vanderbijlpark increased temper line targets by 30%** (29kt → 38kt monthly). The final processing step before customer dispatch faced critical constraints:
+After Saldanha Works closure, **thin flat steel products redirected to Vanderbijlpark increased temper line targets by ~30%** (≈29 kt → 38 kt/month). The final processing step before dispatch faced persistent underperformance:
 
-- Equipment not designed for thin products (originally optimized for thicker gauge)
-- No historical performance data for new product mix
-- Falling tempo and missed monthly targets for first time ever
-- Zero visibility into which of 17 equipment pieces constrained the line
-- 25% tempo variance between shifts with no root cause identified
-- Reactive maintenance (breakdowns addressed after failure, not predicted)
+- Equipment not optimised for thin-gauge products  
+- No equipment-level visibility in MES  
+- High scrap rate (**31.2%**) consuming full cycle time  
+- Large and inconsistent coil-to-coil gaps  
+- Maintenance downtime poorly categorised and disconnected from operations  
+- Perceived shift performance differences without data-backed root cause  
 
-**Management Question**: *"We're missing targets. What's slowing the line and how do we consistently hit 38kt?"*
+**Management Question**:  
+*“Why are we missing targets, and what is actually limiting throughput?”*
 
 ### **The Data Gap**
 
@@ -163,7 +170,7 @@ Following Saldanha Works closure, **thin flat steel products redirected to Vande
 *Equipment time contribution waterfall: Temper Mill (18%), Exit Coil Car (14%), Decoiler (12%) identified as critical constraints—targeted interventions achieved 10% tempo improvement*
 
 ![Tempo Trend](assets/tempo_daily_trend.png)
-*Daily tempo with 7-day moving average: Declining pattern (April-May) reversed post-optimization (June-August)—shift handover gaps reduced from 22 to 7 minutes through 3-shift recommendation*
+*Daily tempo with 7-day moving average: Declining pattern (April-May) reversed post-optimization (June-September)—shift handover gaps reduced from 22 to 7 minutes through 3-shift recommendation*
 
 ### **Feature Engineering**
 
