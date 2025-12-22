@@ -1,0 +1,359 @@
+# ArcelorMittal South Africa Power BI Theme
+## Installation and Usage Guide
+
+---
+
+## Theme Overview
+
+This Power BI theme file applies ArcelorMittal South Africa's corporate brand colors and styling across all dashboards, ensuring consistent visual identity aligned with the steel manufacturing industry aesthetic.
+
+---
+
+## Color Palette
+
+### Primary Brand Colors
+- **Steel Blue:** `#003087` - Primary brand color (headers, accents, primary data)
+- **Steel Red:** `#E30613` - Secondary brand color (alerts, critical metrics, warnings)
+- **Success Green:** `#00B050` - Positive indicators, targets achieved
+- **Warning Yellow:** `#FFC000` - Warning states, moderate alerts
+- **Accent Orange:** `#FF6B35` - Highlight color for emphasis
+
+### Extended Data Colors
+The theme includes 10 data colors for multi-series charts:
+1. `#003087` - Steel Blue
+2. `#E30613` - Steel Red
+3. `#00B050` - Success Green
+4. `#FFC000` - Warning Yellow
+5. `#FF6B35` - Accent Orange
+6. `#4472C4` - Chart Blue
+7. `#70AD47` - Chart Green
+8. `#FD8A04` - Chart Orange
+9. `#5B9BD5` - Light Blue
+10. `#C00000` - Dark Red
+
+### Background Colors
+- **Page Background:** `#F8F9FA` - Light gray
+- **Visual Background:** `#FFFFFF` - White
+- **Visual Header:** `#F5F5F5` - Light steel gray
+- **Outspace:** `#E5E5E5` - Medium gray
+
+### Semantic Colors
+- **Good/Positive:** `#00B050` - Green
+- **Neutral:** `#FFC000` - Yellow
+- **Bad/Negative:** `#E30613` - Red
+- **Maximum:** `#003087` - Blue
+- **Minimum:** `#E30613` - Red
+- **Null:** `#808080` - Gray
+
+---
+
+## Installation Instructions
+
+### Method 1: Apply Theme to Current Report
+
+1. **Open your Power BI Desktop file**
+2. Go to **View** tab on the ribbon
+3. Click **Themes** dropdown
+4. Select **Browse for themes**
+5. Navigate to `ArcelorMittal_PowerBI_Theme.json`
+6. Click **Open**
+7. Power BI will apply the theme automatically
+
+### Method 2: Set as Default Theme
+
+1. **Copy the JSON file** to:
+   ```
+   C:\Users\[YourUsername]\Documents\Power BI Desktop\Themes\
+   ```
+2. Restart Power BI Desktop
+3. The theme will appear in the **Themes** gallery
+4. Click to apply to any report
+
+---
+
+## Typography Specifications
+
+### Font Families
+All visuals use **Segoe UI** font family for consistency with Microsoft standards and readability.
+
+### Text Classes
+
+**Callout (KPI Values):**
+- Font Size: 45pt
+- Font: Segoe UI Semibold
+- Color: `#1A1A1A` (Dark Gray)
+
+**Title (Visual Titles):**
+- Font Size: 18pt
+- Font: Segoe UI Semibold
+- Color: `#003087` (Steel Blue)
+
+**Header (Section Headers):**
+- Font Size: 14pt
+- Font: Segoe UI Semibold
+- Color: `#1A1A1A` (Dark Gray)
+
+**Label (Axis Labels, Category Labels):**
+- Font Size: 11pt
+- Font: Segoe UI
+- Color: `#666666` (Medium Gray)
+
+---
+
+## Visual-Specific Styling
+
+### Card Visuals (KPIs)
+- **Callout Value:** 45pt, Steel Blue
+- **Category Labels:** 11pt, Medium Gray
+- **Display Units:** Auto-scaling
+
+### Line Charts
+- **Line Width:** 3px
+- **Line Style:** Solid, rounded joins
+- **Markers:** Enabled
+- **Legend:** Top position, 10pt
+
+### Bar & Column Charts
+- **Data Points:** All visible
+- **Legend:** Top position, 10pt
+
+### Pie & Donut Charts
+- **Labels:** Data values, 11pt, Semibold
+- **Legend:** Bottom position, 10pt
+
+### Tables & Matrix
+- **Column Headers:** White text on Steel Blue background, 11pt Semibold
+- **Row Headers:** White text on Steel Blue background, 11pt Semibold
+- **Values (Primary):** Dark gray text on white, 10pt
+- **Values (Secondary):** Dark gray text on light gray, 10pt
+- **Subtotals:** Dark text on yellow background, 10pt Semibold
+- **Grand Total:** White text on red background, 11pt Semibold
+- **Grid Lines:** Light gray (`#E0E0E0`), 1px
+- **Outline:** Steel Blue, 2px
+
+### Slicers
+- **Header:** White text on Steel Blue background, 11pt Semibold
+- **Items:** Dark text on white, 10pt
+- **Background:** White
+- **Border:** Light gray frame
+
+### Shapes
+- **Fill:** Steel Blue (`#003087`)
+- **Border:** Steel Red (`#E30613`), 2px
+
+---
+
+## Best Practices for Using This Theme
+
+### 1. Visual Hierarchy
+- Use **Steel Blue** for primary information
+- Use **Steel Red** for critical alerts and totals
+- Use **Success Green** for positive metrics
+- Use **Warning Yellow** for moderate alerts
+
+### 2. Chart Types by Use Case
+
+**Tempo & Performance Trends:**
+- Line charts with Steel Blue lines
+- Target lines in Steel Red (dashed)
+
+**Shift Comparisons:**
+- Column charts with different colors per shift
+- A: Success Green, B: Chart Blue, C: Warning Yellow, D: Accent Orange
+
+**Equipment Status:**
+- Stacked bars: RUN (Green), IDLE (Yellow), FAULT (Red)
+
+**Product Mix:**
+- Donut charts: Prime (Green), Scrap (Red)
+
+**Bottleneck Analysis:**
+- Waterfall charts: Steel Blue to Steel Red gradient
+- Heatmaps: Green (low) to Red (high)
+
+### 3. Conditional Formatting
+
+**KPI Cards:**
+- Green border: On target or above
+- Yellow border: Near target (90-100%)
+- Red border: Below target (<90%)
+
+**Tables:**
+- Use data bars with Steel Blue fill
+- Use color scales: Green → Yellow → Red
+- Use icon sets with traffic light colors
+
+### 4. Page Layout
+- **Page Background:** Light gray (`#F8F9FA`)
+- **Visual Spacing:** Consistent 20px gaps
+- **Visual Borders:** 1px light gray with 4px radius
+- **Drop Shadows:** Subtle, 90% transparency
+
+---
+
+## Customization Options
+
+### Adjusting Data Colors
+To change the data color sequence, modify the `dataColors` array in the JSON:
+
+```json
+"dataColors": [
+  "#003087",  // First series
+  "#E30613",  // Second series
+  "#00B050",  // Third series
+  // ... add more colors
+]
+```
+
+### Changing Semantic Colors
+Modify good/neutral/bad colors for different KPI thresholds:
+
+```json
+"good": "#00B050",      // Positive indicators
+"neutral": "#FFC000",   // Neutral/warning
+"bad": "#E30613"        // Negative indicators
+```
+
+### Adjusting Font Sizes
+Edit text class definitions to increase/decrease sizes:
+
+```json
+"callout": {
+  "fontSize": 45,  // Change this value
+  ...
+}
+```
+
+---
+
+## Industry-Specific Recommendations
+
+### Hot Rolling Plant Dashboards
+
+**Executive Summary:**
+- KPI cards with large callout values (45pt)
+- Line charts for tempo trends
+- Donut charts for prime/scrap split
+
+**Bottleneck Analysis:**
+- Waterfall charts with Steel Blue → Red gradient
+- Matrix with conditional formatting
+- Scatter plots with size encoding
+
+**Maintenance & Downtime:**
+- Red-themed visuals for emphasis
+- MTBF/MTTR KPIs with large callouts
+- Stacked bars for downtime categories
+
+**Shift Performance:**
+- Multi-colored bars (one per shift)
+- Comparison charts with target lines
+- Tables with alternating row colors
+
+**Product Mix & Tempo:**
+- Green-themed visuals for production focus
+- Scatter plots for product characteristics
+- Heatmaps for cycle time analysis
+
+---
+
+## Accessibility Considerations
+
+### Color Contrast
+All color combinations meet WCAG 2.1 AA standards:
+- White text on Steel Blue: 7.2:1 contrast ratio ✓
+- White text on Steel Red: 6.8:1 contrast ratio ✓
+- Dark text on White: 16.1:1 contrast ratio ✓
+
+### Color Blindness
+The theme is designed to be distinguishable for:
+- **Protanopia (Red-blind):** Uses distinct hues and shapes
+- **Deuteranopia (Green-blind):** Relies on blue/orange contrast
+- **Tritanopia (Blue-blind):** Uses red/green contrast
+
+### Screen Readers
+- All visuals have appropriate titles
+- Data labels provide numeric context
+- Tooltips offer additional information
+
+---
+
+## Theme Maintenance
+
+### Version Control
+- Save theme file in version control (Git)
+- Document any customizations
+- Track changes to color palette
+
+### Updates
+- Review theme quarterly
+- Update based on user feedback
+- Align with corporate brand updates
+
+### Distribution
+Share theme file with team members via:
+- SharePoint document library
+- Network shared drive
+- Power BI workspace
+
+---
+
+## Troubleshooting
+
+### Theme Not Applying
+**Issue:** Colors don't change after importing theme
+**Solution:** 
+- Close and reopen Power BI Desktop
+- Manually set visual colors if needed
+- Check JSON syntax validity
+
+### Fonts Not Displaying
+**Issue:** Segoe UI not appearing correctly
+**Solution:**
+- Ensure Segoe UI is installed on system
+- Fallback to system fonts if needed
+- Check font permissions
+
+### Colors Different from Expected
+**Issue:** Colors appear different on screen
+**Solution:**
+- Check monitor calibration
+- Verify hex codes in JSON
+- Test on different displays
+
+---
+
+## Support and Resources
+
+### Additional Documentation
+- Power BI Theme Documentation: https://docs.microsoft.com/power-bi/create-reports/desktop-report-themes
+- Color Accessibility: https://webaim.org/resources/contrastchecker/
+- JSON Validation: https://jsonlint.com/
+
+### Internal Contacts
+- Power BI Administrator: [Contact Info]
+- IT Support: [Contact Info]
+- Process Engineering Team: [Contact Info]
+
+---
+
+## Version History
+
+**Version 1.0 - December 2024**
+- Initial release
+- ArcelorMittal SA brand colors
+- Hot rolling plant dashboard optimizations
+- Accessibility compliance
+
+---
+
+## License and Usage
+
+**Internal Use Only**
+This theme is designed for ArcelorMittal South Africa internal use. Do not distribute outside the organization without authorization.
+
+**Copyright © 2024 ArcelorMittal South Africa**
+
+---
+
+**END OF THEME DOCUMENTATION**

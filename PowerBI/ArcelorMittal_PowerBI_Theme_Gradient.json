@@ -1,0 +1,297 @@
+{
+  "name": "ArcelorMittal Hot Rolling Plant Analytics - Gradient Edition",
+  "dataColors": [
+    "#E91E63",
+    "#FF6B35",
+    "#9C27B0",
+    "#D81B60",
+    "#FF8A50",
+    "#AB47BC",
+    "#EC407A",
+    "#FF9800",
+    "#BA68C8",
+    "#F06292"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#1A1A1A",
+  "tableAccent": "#E91E63",
+  "good": "#4CAF50",
+  "neutral": "#FF9800",
+  "bad": "#E91E63",
+  "maximum": "#9C27B0",
+  "center": "#FF6B35",
+  "minimum": "#D81B60",
+  "null": "#B0B0B0",
+  "textClasses": {
+    "callout": {
+      "fontSize": 45,
+      "fontFace": "Segoe UI",
+      "color": "#1A1A1A"
+    },
+    "title": {
+      "fontSize": 18,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#E91E63"
+    },
+    "header": {
+      "fontSize": 14,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#1A1A1A"
+    },
+    "label": {
+      "fontSize": 11,
+      "fontFace": "Segoe UI",
+      "color": "#666666"
+    }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "*": [
+          {
+            "fontFamily": "Segoe UI"
+          }
+        ],
+        "title": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#E91E63"
+              }
+            },
+            "background": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "fontSize": 14,
+            "fontFamily": "Segoe UI Semibold"
+          }
+        ],
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "color": {
+              "solid": {
+                "color": "#E0E0E0"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#F8F9FA"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "outspace": [
+          {
+            "color": {
+              "solid": {
+                "color": "#E5E5E5"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "card": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            }
+          }
+        ],
+        "border": [
+          {
+            "color": {
+              "solid": {
+                "color": "#E91E63"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "slicer": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            }
+          }
+        ],
+        "header": [
+          {
+            "foreground": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "background": {
+              "solid": {
+                "color": "#E91E63"
+              }
+            },
+            "fontFamily": "Segoe UI Semibold",
+            "fontSize": 11
+          }
+        ],
+        "items": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#1A1A1A"
+              }
+            },
+            "background": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "fontSize": 10
+          }
+        ]
+      }
+    },
+    "tableEx": {
+      "*": {
+        "grid": [
+          {
+            "color": {
+              "solid": {
+                "color": "#E0E0E0"
+              }
+            },
+            "gridVertical": true,
+            "gridVerticalWeight": 1,
+            "gridHorizontal": true,
+            "gridHorizontalWeight": 1,
+            "rowPadding": 5
+          }
+        ],
+        "columnHeaders": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": "#E91E63"
+              }
+            },
+            "fontFamily": "Segoe UI Semibold",
+            "fontSize": 11,
+            "autoSizeColumnWidth": true
+          }
+        ],
+        "values": [
+          {
+            "fontColorPrimary": {
+              "solid": {
+                "color": "#1A1A1A"
+              }
+            },
+            "backColorPrimary": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "fontColorSecondary": {
+              "solid": {
+                "color": "#1A1A1A"
+              }
+            },
+            "backColorSecondary": {
+              "solid": {
+                "color": "#F5F5F5"
+              }
+            },
+            "fontSize": 10
+          }
+        ],
+        "total": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": "#9C27B0"
+              }
+            },
+            "fontFamily": "Segoe UI Semibold",
+            "fontSize": 11
+          }
+        ],
+        "subTotals": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#1A1A1A"
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": "#FFE0B2"
+              }
+            },
+            "fontFamily": "Segoe UI Semibold",
+            "fontSize": 10
+          }
+        ]
+      }
+    },
+    "shape": {
+      "*": {
+        "fill": [
+          {
+            "color": {
+              "solid": {
+                "color": "#E91E63"
+              }
+            }
+          }
+        ],
+        "line": [
+          {
+            "color": {
+              "solid": {
+                "color": "#9C27B0"
+              }
+            },
+            "weight": 2
+          }
+        ]
+      }
+    }
+  }
+}
