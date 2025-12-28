@@ -1,15 +1,23 @@
-# ArcelorMittal Hot Rolling Plant Production Analytics
-## End-to-End Data Engineering & BI Solution
+# ArcelorMittal Production Analytics & Azure Pipeline
 
 <div align="center">
 
-![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)
-![Azure](https://img.shields.io/badge/Azure-Data%20Factory%20%7C%20SQL-0078D4.svg)
-![Power BI](https://img.shields.io/badge/Power%20BI-Dashboards-F2C811.svg)
-![Pandas](https://img.shields.io/badge/Pandas-Data%20Engineering-green.svg)
-![Status](https://img.shields.io/badge/Status-Production%20Deployed-brightgreen.svg)
+![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Azure](https://img.shields.io/badge/Azure-Data%20Factory-0078D4?style=for-the-badge&logo=microsoft-azure&logoColor=white)
+![SQL Server](https://img.shields.io/badge/SQL-Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)
+![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![ETL](https://img.shields.io/badge/ETL-Data%20Engineering-00B4D8?style=for-the-badge)
+![Pareto](https://img.shields.io/badge/Pareto-Analysis-2ea44f?style=for-the-badge)
+![Manufacturing](https://img.shields.io/badge/Manufacturing-Analytics-FF6600?style=for-the-badge)
 
-**Delivered R38M Annual Operating Profit and Enabled First-Ever 40 kt/month Production Through Data-Driven Optimisation**
+![GitHub stars](https://img.shields.io/github/stars/TimothyTshimauswu/Arcelor-Mittal-Steel-Production-Data-Engineering-Pipeline-and-Operations-Analytics?style=social)
+![GitHub forks](https://img.shields.io/github/forks/TimothyTshimauswu/Arcelor-Mittal-Steel-Production-Data-Engineering-Pipeline-and-Operations-Analytics?style=social)
+
+**Delivered R38M Annual Operating Profit Through Cloud Data Engineering & BI Analytics**
+
+[![View Repository](https://img.shields.io/badge/View-Repository-181717?style=for-the-badge&logo=github)](https://github.com/TimothyTshimauswu/Arcelor-Mittal-Steel-Production-Data-Engineering-Pipeline-and-Operations-Analytics)
+[![Read Documentation](https://img.shields.io/badge/Read-Documentation-blue?style=for-the-badge)](https://github.com/TimothyTshimauswu/Arcelor-Mittal-Steel-Production-Data-Engineering-Pipeline-and-Operations-Analytics#readme)
 
 </div>
 
